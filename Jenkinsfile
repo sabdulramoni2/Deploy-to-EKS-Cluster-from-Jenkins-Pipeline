@@ -6,8 +6,8 @@ pipeline {
         maven 'maven-3.9.6'
     }
     environment {
-        DOCKER_REPO_SERVER = 'ashiwaju/jupiter12'
-        DOCKER_REPO = "${DOCKER_REPO_SERVER}/java-maven-app"
+        #DOCKER_REPO_SERVER = 'ashiwaju/jupiter12'
+        DOCKER_REPO = "ashiwaju/jupiter12"
     }
     stages {
         stage('increment version') {
