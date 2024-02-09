@@ -60,10 +60,10 @@ pipeline {
         stage('commit version update'){
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'git-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                    withCredentials([usernamePassword(credentialsId: 'token', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                         sh "git remote set-url origin https://${USER}:${PASS}@github.com/sabdulramoni2/deploy_to_eks_jenkins.git"
-                        sh 'git config --global user.email "abdulramonisaidi@yahoo.com"'
-                        sh 'git config --global user.name "sabdulramoni2"'
+                        sh 'git config --global user.email "jenkins@example.com"'
+                        sh 'git config --global user.name "jenkins"'
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin HEAD:jenkins-jobs'
