@@ -36,9 +36,9 @@ pipeline {
                 script {
                     echo "building the docker image..."
                     withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                        sh "docker build -t ${DOCKER_REPO}:${IMAGE_NAME} ."
+                        sh "docker build -t ashiwaju/jupiter12:${IMAGE_NAME} ."
                         sh 'echo $PASS | docker login -u $USER --password-stdin ${DOCKER_REPO}'
-                        sh "docker push ${DOCKER_REPO}:${IMAGE_NAME}"
+                        sh "docker push ashiwaju/jupiter12:${IMAGE_NAME}"
                     }
                 }
             }
