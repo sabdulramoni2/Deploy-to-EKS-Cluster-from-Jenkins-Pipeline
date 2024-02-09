@@ -3,7 +3,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven'
+        maven 'Maven-3.9.6'
     }
     environment {
         DOCKER_REPO_SERVER = 'ashiwaju/jupiter12'
