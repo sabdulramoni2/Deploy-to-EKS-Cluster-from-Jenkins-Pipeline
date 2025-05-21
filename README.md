@@ -43,15 +43,21 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
 - The kubeconfigfile contains all the necessary information for authentication.
 
 ### **Add AWS credentials on jenkins for AWS account authentication**
-a.	Create AWS IAM user for jenkins with limited permission.
-b.	From the jenkins UI of the multibranch pipeline.
-c.	Selects credentials and select the secret text for both access key and secret access key.
-jenkins_access_key_id   and jenkins_aws_secret_access_key_id
-d.	Now these credentials are available for jenkins to use.
 
-5.	Adjust jenkinsfile to configure EKS cluster deployment.
-a.	First set up the env variable for the credentials.
-AWS_ACCESS_KEY_ID = credential(‘jenkins_access_key_id’)
-AWS_SECRET_ACCESS_KEY_ID = credentials(‘jenkins_aws_secret_access_key_id’)
-b.	Using the shell script to deploy the image to our cluster.
-Sh ‘kubectl create deployment nginx-deployment –image=nginx’
+- Create AWS IAM user for jenkins with limited permission.
+- From the jenkins UI of the multibranch pipeline.
+- Selects credentials and select the secret text for both access key and secret access key (jenkins_access_key_id   and jenkins_aws_secret_access_key_id).
+- Now these credentials are available for jenkins to use.
+
+### **Adjust jenkinsfile to configure EKS cluster deployment**
+
+- First set up the env variable for the credentials.
+  ```
+        AWS_ACCESS_KEY_ID = credential(‘jenkins_access_key_id’)
+        AWS_SECRET_ACCESS_KEY_ID = credentials(‘jenkins_aws_secret_access_key_id’)
+  ```
+  
+- Using the shell script to deploy the image to our cluster.
+  ```
+      Sh ‘kubectl create deployment nginx-deployment –image=nginx’
+  ```
