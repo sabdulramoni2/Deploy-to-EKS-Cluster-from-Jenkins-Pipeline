@@ -1,7 +1,7 @@
 # Deploy to EKS Cluster from Jenkins Pipeline
 
 ## **Project Overview**
-This project demonstrates how deploy to EKS cluster from jenkins pipeline. 
+This project demonstrates how deploy to EKS cluster AND LKE from jenkins pipeline using two seperate branchees. See LKE branch for more details.
 
 ---
   
