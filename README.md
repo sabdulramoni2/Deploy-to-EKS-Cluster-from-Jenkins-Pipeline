@@ -14,7 +14,10 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
 
 ### **Installed aws-iam-authenticator inside Jenkins Container**
 - Download the authenticator with curl
-- Execute permission on it using “chmod +x ./aws-iam-authenticator”.
+- Execute permission on it using
+  ```
+      chmod +x ./aws-iam-authenticator
+  ```
 - Move to /usr/local/bin mv./aws-iam-authenticator /usr/local/bin.
 - Exit the container.
 
@@ -27,11 +30,11 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
 - Copy the file using “docker cp config containerID;/var/jenkins_home/.kube/".
 - The kubeconfigfile contains all the necessary information for authentication.
 
-4.	Add AWS credentials on jenkins for AWS account authentication.
+### **Add AWS credentials on jenkins for AWS account authentication**
 a.	Create AWS IAM user for jenkins with limited permission.
 b.	From the jenkins UI of the multibranch pipeline.
 c.	Selects credentials and select the secret text for both access key and secret access key.
-jenkins_access_key_id   AND jenkins_aws_secret_access_key_id
+jenkins_access_key_id   and jenkins_aws_secret_access_key_id
 d.	Now these credentials are available for jenkins to use.
 
 5.	Adjust jenkinsfile to configure EKS cluster deployment.
