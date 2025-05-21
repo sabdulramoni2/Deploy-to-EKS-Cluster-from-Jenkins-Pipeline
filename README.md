@@ -93,6 +93,9 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
 
 - Create the kubeconfig file manually on the host server and copy into the container.
 - Vim config; copy the content from AWS documentation. Add the cluster name, server endpoint, certificate-authority-data.
+
+  ![image](https://github.com/user-attachments/assets/62d241d7-0ed8-4625-8dfc-6b6178c01775)
+
 - The certificate-authority-data is automatically generated in the kubeconfig. Copy and paste it.
 - Now exec into the container, move into the home directory
   ```
@@ -103,7 +106,15 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
   ```
        “docker cp config containerID;/var/jenkins_home/.kube/"
   ```
+
+   ![image](https://github.com/user-attachments/assets/902bb880-a480-4ef2-81b8-aa0ae6eb9f02)
+  
 - The kubeconfigfile contains all the necessary information for authentication.
+
+
+  ![image](https://github.com/user-attachments/assets/77d4bffb-ca3e-4738-9a8b-a38327b007da)
+
+
 
 ### **Add AWS credentials on jenkins for AWS account authentication**
 
