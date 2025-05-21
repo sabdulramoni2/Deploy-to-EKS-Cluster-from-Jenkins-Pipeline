@@ -1,0 +1,42 @@
+# Deploy to EKS Cluster from Jenkins Pipeline
+
+## **Project Overview**
+This project demonstrates how deploy to EKS cluster from jenkins pipeline. 
+
+---
+  
+## **Feature**
+
+### **install kubectl command tools inside jenkins container**
+- ssh into the server where jenkins is running as a container.
+- Run docker exce to enter the container as a root user.
+- Install kubectl with a curl command from the official source.
+
+2.	Installed aws-iam-authenticator inside Jenkins Container.
+a.	Download the authenticator with curl
+b.	Execute permission on it using “chmod +x ./aws-iam-authenticator”.
+c.	Move to /usr/local/bin mv./aws-iam-authenticator /usr/local/bin.
+d.	Exit the container.
+
+3.	Created    ./kube/config and copied inside the Jenkins Container.
+a.	Create the kubeconfig file manually on the host server and copy into the container.
+b.	Vim config; copy the content from AWS documentation. Add the cluster name, server endpoint, certificate-authority-data.
+c.	The certificate-authority-data is automatically generated in the kubeconfig. Copy and paste it.
+d.	Now exec into the container, move into the home directory using “ cd ~ ”.
+e.	Create a new directory mkdir .kube in the home directory inside the container and exit the container.
+f.	Copy the file using “docker cp config containerID;/var/jenkins_home/.kube/".
+g.	The kubeconfigfile contains all the necessary information for authentication.
+
+4.	Add AWS credentials on jenkins for AWS account authentication.
+a.	Create AWS IAM user for jenkins with limited permission.
+b.	From the jenkins UI of the multibranch pipeline.
+c.	Selects credentials and select the secret text for both access key and secret access key.
+jenkins_access_key_id   AND jenkins_aws_secret_access_key_id
+d.	Now these credentials are available for jenkins to use.
+
+5.	Adjust jenkinsfile to configure EKS cluster deployment.
+a.	First set up the env variable for the credentials.
+AWS_ACCESS_KEY_ID = credential(‘jenkins_access_key_id’)
+AWS_SECRET_ACCESS_KEY_ID = credentials(‘jenkins_aws_secret_access_key_id’)
+b.	Using the shell script to deploy the image to our cluster.
+Sh ‘kubectl create deployment nginx-deployment –image=nginx’
