@@ -8,26 +8,38 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
 ## **Feature**
 
 ### **Install kubectl command tools inside jenkins container**
+
 - ssh into the server where jenkins is running as a container.
 - Run docker exce to enter the container as a root user.
 - Install kubectl with a curl command from the official source.
 
 ### **Installed aws-iam-authenticator inside Jenkins Container**
+
 - Download the authenticator with curl
 - Execute permission on it using
   ```
       chmod +x ./aws-iam-authenticator
   ```
-- Move to /usr/local/bin mv./aws-iam-authenticator /usr/local/bin.
+- Move to local bin
+  ```
+       /usr/local/bin mv./aws-iam-authenticator /usr/local/bin
+  ```
 - Exit the container.
 
 ### **Created    ./kube/config and copied inside the Jenkins Container**
+
 - Create the kubeconfig file manually on the host server and copy into the container.
 - Vim config; copy the content from AWS documentation. Add the cluster name, server endpoint, certificate-authority-data.
 - The certificate-authority-data is automatically generated in the kubeconfig. Copy and paste it.
-- Now exec into the container, move into the home directory using “ cd ~ ”.
+- Now exec into the container, move into the home directory
+  ```
+       using  cd ~
+  ```
 - Create a new directory mkdir .kube in the home directory inside the container and exit the container.
-- Copy the file using “docker cp config containerID;/var/jenkins_home/.kube/".
+- Copy the file using
+  ```
+       “docker cp config containerID;/var/jenkins_home/.kube/"
+  ```
 - The kubeconfigfile contains all the necessary information for authentication.
 
 ### **Add AWS credentials on jenkins for AWS account authentication**
