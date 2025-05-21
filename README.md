@@ -135,4 +135,23 @@ This project demonstrates how deploy to EKS cluster from jenkins pipeline.
   ```
       Sh ‘kubectl create deployment nginx-deployment –image=nginx’
   ```
+
+  ![image](https://github.com/user-attachments/assets/00698adf-7e5d-467c-a861-d0e905d74edf)
+
+
+  ![image](https://github.com/user-attachments/assets/c42a0e10-f5a8-43b0-905a-ba2ed9b9ab5a)
+
+
+  ![image](https://github.com/user-attachments/assets/d99243b7-d83d-40b3-8cd5-7878e37dfab2)
+
+
+  ![image](https://github.com/user-attachments/assets/ab616ce9-c560-4c24-9656-6b9d82164b9f)
+
+
+  ![image](https://github.com/user-attachments/assets/b4f3701a-d728-4263-9197-1380e56b1d6f)
+
+
+
+
+
   
